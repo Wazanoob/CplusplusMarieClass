@@ -1,3 +1,4 @@
 ﻿  Main.cpp
-C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Main.cpp(88,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Main.cpp(115,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Main.cpp(139,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   Course C++ ArtFx.vcxproj -> C:\Users\cpaya\source\repos\Course C++ ArtFx\x64\Debug\Course C++ ArtFx.exe

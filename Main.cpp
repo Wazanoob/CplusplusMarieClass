@@ -82,10 +82,37 @@ string GetLifeText(int life)
     return life > 5 ? "alive" : "dying";
 }
 
+int ThrowDice(int sides) {
+    return (rand() % sides) + 1;
+    //The rest of the division of rand by sides
+}
 
-void RollDices()
+int SumDices(int throws, int sides) {
+    int sum = 0;
+    for (int i = 0; i < throws; i++)
+    {
+        int dice = ThrowDice(sides);
+        //cout << dice << endl;
+        sum += dice;
+    }
+
+    return sum;
+}
+
+int CountDicesAbove(int sides, int throws, int minimum) {
+    int count = 0;
+    for (int t = 0; t < throws; t++) 
+    {
+        if (ThrowDice(sides) >= minimum)
+            count++;
+    }
+
+    return count;
+}
+
+void MyRollDices()
 {
-    srand(time(NULL));
+    srand(time(0));
     int attempts = 0;
     int faces = 6;
     int doubleOne = 0;
@@ -105,6 +132,23 @@ void RollDices()
         attempts += 1;
     }
     cout << "PERFECT SCORE 2777 IN: " << attempts << " ATTEMPTS\n";
+}
+
+void MarieRollDices() 
+{
+    srand(time(0));
+    int sides = 6, throws = 1;
+    cout << "How many sides to the dices ?\n";
+    cin >> sides;
+    cout << "How many time do we throw ?\n";
+    cin >> throws;
+    int sum = 0;
+    for (int i = 0; i < throws; i++)
+    {
+        sum += SumDices(throws, sides);
+    }
+    cout << "Launching" << throws << " times " << sides << "-sided dices : " << sum << endl;
+    cout << "The avarage of a cide throw is" << (sum / throws) << endl;
 }
 
 int main()
@@ -134,6 +178,34 @@ int main()
     //pikachu.DisplaySumUp();
 
 //Proba
-    RollDices();
+    //MarieRollDices();
 
+    int sides = 6, throws = 1;
+
+    ////////WARHAMMERGAME :)//////////
+    cout << "How many sides to the dices ?\n";
+    cin >> sides;
+    cout << "How many time do we throw ?\n";
+    cin >> throws;
+    int minimum = 0;
+    do 
+    {
+        cout << "Minimum to touch : ";
+        cin >> minimum;
+    } while (minimum > sides);
+    int touch = CountDicesAbove(sides, throws, minimum);
+    cout << touch << " dice made it through \n";
+
+    do
+    {
+        cout << "Minimum to touch : ";
+        cin >> minimum;
+    } while (minimum > sides);
+    int hurt = CountDicesAbove(sides, touch, minimum);
+    cout << touch << " / " << throws << " touched :" << hurt << " / " << touch << " hurted .\n";
+
+    float touchPercentage = (float)touch / throws;
+    float hurtPercentage = (float)hurt / touch;
+
+    cout << "touch ratio: " << touchPercentage << "; hurt ratio: " << hurtPercentage << endl;
 }
