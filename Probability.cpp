@@ -4,14 +4,7 @@
 
 using namespace std;
 
-void RollDices();
-
-int main()
-{
-	RollDices();
-}
-
-void RollDices() 
+void Probability::RollDices()
 {
 	srand(time(NULL));
 	int attempts = 0;

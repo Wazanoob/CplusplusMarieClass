@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Course C++ ArtFx.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Probability.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="Probability.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

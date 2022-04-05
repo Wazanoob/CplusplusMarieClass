@@ -2,6 +2,9 @@
 class Probability
 {
 private:
-	//void RollDices();
+
+public:
+
+	void RollDices();
 };
 
