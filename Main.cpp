@@ -178,34 +178,35 @@ int main()
     //pikachu.DisplaySumUp();
 
 //Proba
+    MyRollDices();
     //MarieRollDices();
 
-    int sides = 6, throws = 1;
+    //int sides = 6, throws = 1;
 
-    ////////WARHAMMERGAME :)//////////
-    cout << "How many sides to the dices ?\n";
-    cin >> sides;
-    cout << "How many time do we throw ?\n";
-    cin >> throws;
-    int minimum = 0;
-    do 
-    {
-        cout << "Minimum to touch : ";
-        cin >> minimum;
-    } while (minimum > sides);
-    int touch = CountDicesAbove(sides, throws, minimum);
-    cout << touch << " dice made it through \n";
+    //////////WARHAMMERGAME :)//////////
+    //cout << "How many sides to the dices ?\n";
+    //cin >> sides;
+    //cout << "How many time do we throw ?\n";
+    //cin >> throws;
+    //int minimum = 0;
+    //do 
+    //{
+    //    cout << "Minimum to touch : ";
+    //    cin >> minimum;
+    //} while (minimum > sides);
+    //int touch = CountDicesAbove(sides, throws, minimum);
+    //cout << touch << " dice made it through \n";
 
-    do
-    {
-        cout << "Minimum to touch : ";
-        cin >> minimum;
-    } while (minimum > sides);
-    int hurt = CountDicesAbove(sides, touch, minimum);
-    cout << touch << " / " << throws << " touched :" << hurt << " / " << touch << " hurted .\n";
+    //do
+    //{
+    //    cout << "Minimum to touch : ";
+    //    cin >> minimum;
+    //} while (minimum > sides);
+    //int hurt = CountDicesAbove(sides, touch, minimum);
+    //cout << touch << " / " << throws << " touched :" << hurt << " / " << touch << " hurted .\n";
 
-    float touchPercentage = (float)touch / throws;
-    float hurtPercentage = (float)hurt / touch;
+    //float touchPercentage = (float)touch / throws;
+    //float hurtPercentage = (float)hurt / touch;
 
-    cout << "touch ratio: " << touchPercentage << "; hurt ratio: " << hurtPercentage << endl;
+    //cout << "touch ratio: " << touchPercentage << "; hurt ratio: " << hurtPercentage << endl;
 }
