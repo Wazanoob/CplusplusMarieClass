@@ -1,4 +1,3 @@
-#include "Probability.h"
 #include "Pokemon.h"
 #include <stdlib.h>
 #include<vector>
@@ -83,26 +82,58 @@ string GetLifeText(int life)
     return life > 5 ? "alive" : "dying";
 }
 
+
+void RollDices()
+{
+    srand(time(NULL));
+    int attempts = 0;
+    int faces = 6;
+    int doubleOne = 0;
+
+    while (doubleOne != 2777)
+    {
+        doubleOne = 0;
+
+        for (int i = 1; i <= 100000; ++i)
+        {
+            int count = (rand() % faces + 1) + (rand() % faces + 1);
+            if (count == 2)
+            {
+                doubleOne += 1;
+            }
+        }
+        attempts += 1;
+    }
+    cout << "PERFECT SCORE 2777 IN: " << attempts << " ATTEMPTS\n";
+}
+
 int main()
 {
-    cout << "Hello World!\n";
-    int life = 10;
-    cout << "The value " << life << " is stored at memory adress : " << &life << endl;
-    Damage(life);
-    cout << life << endl;
-    DamagePointedObject(&life);
-    cout << life << endl;
-    //if life > 5 show "Alive" else show "Dying"
-    cout << "Player is " << GetLifeText(life) << endl;
+//C++
+    //cout << "Hello World!\n";
+    //int life = 10;
+    //cout << "The value " << life << " is stored at memory adress : " << &life << endl;
+    //Damage(life);
+    //cout << life << endl;
+    //DamagePointedObject(&life);
+    //cout << life << endl;
+    ////if life > 5 show "Alive" else show "Dying"
+    //cout << "Player is " << GetLifeText(life) << endl;
 
-    ShowMultiDimensionalMap();
+    //ShowMultiDimensionalMap();
     //ShowVector();
-    cout << "============PIKACHU=============\n";
-    Pokemon pikachu = Pokemon("Pikachu", "a yellow electric mouse", 20);
-    pikachu.DisplaySumUp();
-    cout << "=========================\n";
-    pikachu.mPetName = "Pika Pika";
-    pikachu.Hurt(6);
-    pikachu.Heal(12);
-    pikachu.DisplaySumUp();
+
+//Pokemon
+    //cout << "============PIKACHU=============\n";
+    //Pokemon pikachu = Pokemon("Pikachu", "a yellow electric mouse", 20);
+    //pikachu.DisplaySumUp();
+    //cout << "=========================\n";
+    //pikachu.mPetName = "Pika Pika";
+    //pikachu.Hurt(6);
+    //pikachu.Heal(12);
+    //pikachu.DisplaySumUp();
+
+//Proba
+    RollDices();
+
 }
