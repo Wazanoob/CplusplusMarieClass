@@ -8,7 +8,7 @@ Pokemon::Pokemon()
 {
 	mName = "Default";
 	mDescription = "Default";
-	mPetName = "Default";
+	petName = "Default";
 	mMaxLifePoints = 1;
 	mCurrentLifePoints = mMaxLifePoints;
 }
@@ -17,7 +17,7 @@ Pokemon::Pokemon(string name, string desc, int maxLifePoints)
 {
 	mName = name;
 	mDescription = desc;
-	mPetName = mName;
+	petName = mName;
 	mMaxLifePoints = maxLifePoints;
 	mCurrentLifePoints = mMaxLifePoints;
 }
@@ -53,41 +53,83 @@ int Pokemon::GetCurrentLifePoints()
 //Damage the current life of the pokemon
 void Pokemon::Hurt(int points)
 {
-	cout << mPetName << " has taken " << points << " hp of damages.\n";
+	cout << petName << " has taken " << points << " hp of damages.\n";
 	//If the pokemon dont have any HP left
 	if (mCurrentLifePoints - points < 0)
 	{
 		//The pokemon dies
-		cout << mPetName << " has passed out.... You should take better care of your pokemons\n";
+		cout << petName << " has passed out.... You should take better care of your pokemons\n";
 		mCurrentLifePoints = 0;
 	}
 	else //The pokemon take damage if still have HP
 	{
 		mCurrentLifePoints -= points;
-		cout << mPetName << " now has " << mCurrentLifePoints << "/" << mMaxLifePoints << endl;
+		cout << petName << " now has " << mCurrentLifePoints << "/" << mMaxLifePoints << endl;
 	}
 }
 //Heal the current life of the pokemon
 void Pokemon::Heal(int points)
 {
-	cout << mPetName << " has been healed of " << points << " hp.\n";
+	cout << petName << " has been healed of " << points << " hp.\n";
 	if (mCurrentLifePoints + points > mMaxLifePoints)
 	{
 		//The pokemon is full health
-		cout << mPetName << "'s health is back to maximum.\n";
+		cout << petName << "'s health is back to maximum.\n";
 		mCurrentLifePoints = mMaxLifePoints;
 	}
 	else
 	{
 		mCurrentLifePoints += points;  // mCurrentLifePoints = mCurrentLifePoints + points;
-		cout << mPetName << " now has " << mCurrentLifePoints << "/" << mMaxLifePoints << endl;
+		cout << petName << " now has " << mCurrentLifePoints << "/" << mMaxLifePoints << endl;
+	}
+}
+
+void Pokemon::LearnAbility(Ability ability)
+{
+	cout << "Trying to learn " << ability.GetName() << endl;
+
+	if (mAbilities.size() < MAX_ABILITIES_COUNT)
+	{
+		//Add ability
+		mAbilities.push_back(ability);
+		cout << mName << " learned : " << ability.GetName() << endl;
+	}
+	else
+	{
+		cout << mName << " Already knows " << MAX_ABILITIES_COUNT << " abilities\n";
+		//TODO choose ability to replace
+		int choice = 0;
+
+		do 
+		{
+			cout << "Which one do you want to replace ?\n";
+			DisplayAbilities();
+			cin >> choice;
+		} while (choice <= 0 || choice > MAX_ABILITIES_COUNT);
+
+		mAbilities[choice - 1] = ability;
+		cout << "Ability was replaced with success. \n";
+		cout << "New Abilities are : \n";
+	}
+	DisplayAbilities();
+}
+
+void Pokemon::DisplayAbilities() 
+{
+	//cout << petName << " knows the following abilities :\n";
+	for (int a = 0; a < mAbilities.size(); a++)
+	{
+		cout << "\t*" << (a + 1 ) 
+			<< " : " << mAbilities[a].GetName() 
+			<< " | " << mAbilities[a].GetDescription() 
+			<< " | dmg : " << mAbilities[a].GetDamages() << "hp.\n";
 	}
 }
 
 //Describe the pokemon
 void Pokemon::DisplaySumUp()
 {
-	cout << mPetName << " is a " << mName << endl;
+	cout << petName << " is a " << mName << endl;
 	cout << "A " << mName << " is " << mDescription << endl;
-	cout << mPetName << " has " << mCurrentLifePoints << "/" << mMaxLifePoints << " hp.\n";
+	cout << petName << " has " << mCurrentLifePoints << "/" << mMaxLifePoints << " hp.\n";
 }

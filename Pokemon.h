@@ -1,5 +1,7 @@
 #pragma once
+#include "Ability.h"
 #include <string>
+#include <vector>
 class Pokemon
 {
 	//Add all the private variables here
@@ -9,10 +11,12 @@ private:
 	int mMaxLifePoints;
 	int mCurrentLifePoints;
 	//Should add Abilities later
-
+	std::vector<Ability> mAbilities;
 	//Add all the public variables and functions here
+
 public:
-	std::string mPetName;
+	std::string petName;
+	const int MAX_ABILITIES_COUNT = 4;
 	Pokemon();
 	Pokemon(std::string name, std::string desc, int maxLifePoints);
 	//Add constructor with abilities parameter
@@ -26,9 +30,9 @@ public:
 	int GetCurrentLifePoints();
 	void Hurt(int points);
 	void Heal(int points);
-	//Add learn ability
+	void LearnAbility(Ability ability);
+	void DisplayAbilities();
 	//Add attack
 
 	void DisplaySumUp();
-
 };
