@@ -22,6 +22,7 @@ Pokemon::Pokemon(string name, string desc, int maxLifePoints)
 	mCurrentLifePoints = mMaxLifePoints;
 }
 
+
 //Destructor ?
 Pokemon::~Pokemon()
 {
@@ -124,6 +125,29 @@ void Pokemon::DisplayAbilities()
 			<< " | " << mAbilities[a].GetDescription() 
 			<< " | dmg : " << mAbilities[a].GetDamages() << "hp.\n";
 	}
+}
+
+int Pokemon::GetAbilityCount() 
+{
+	return mAbilities.size();
+}
+
+Ability Pokemon::GetAbility(int index)
+{
+	if (index > 0 && index < mAbilities.size())
+	{
+		return mAbilities[index];
+	}
+	else 
+	{
+		return Ability();
+	}
+}
+
+void Pokemon::Attack(Pokemon& target, int ability)
+{
+	cout << petName << " attacks " << target.petName << " with " << mAbilities[ability].GetName() << endl;
+	target.Hurt(mAbilities[ability].GetDamages());
 }
 
 //Describe the pokemon

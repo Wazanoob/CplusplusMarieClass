@@ -35,4 +35,7 @@ public:
 	//Add attack
 
 	void DisplaySumUp();
+	int GetAbilityCount();
+	Ability GetAbility(int index);
+	void Attack(Pokemon& target, int ability);
 };

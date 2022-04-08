@@ -2,7 +2,6 @@
 #include "Probability.h"
 #include "CplusplusClass.h"
 #include "Battle.h"
-#include <stdlib.h>
 #include<vector>
 #include <string>
 #include <iostream>
@@ -41,6 +40,13 @@ int main()
     pikachu.LearnAbility(thunderShock);
     pikachu.LearnAbility(gnaw);
     pikachu.LearnAbility(cutie);
+
+    Pokemon stari = Pokemon("Stari", "A cute starfish", 30);
+    stari.LearnAbility(Ability("Splash", "It's wet", 13));
+    stari.LearnAbility(Ability("Water Jet", "It's wetter", 15));
+
+    Battle fight(pikachu, stari);
+    fight.StartBattle();
 
 #pragma region Proba
 
