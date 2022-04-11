@@ -10,6 +10,8 @@ using namespace std;
 
 int main()
 {
+    srand(time(NULL));
+
 #pragma region Cplusplus
     //cout << "Hello World!\n";
     //int life = 10;
@@ -41,11 +43,11 @@ int main()
     pikachu.LearnAbility(gnaw);
     pikachu.LearnAbility(cutie);
 
-    Pokemon stari = Pokemon("Stari", "A cute starfish", 30);
-    stari.LearnAbility(Ability("Splash", "It's wet", 13));
-    stari.LearnAbility(Ability("Water Jet", "It's wetter", 15));
+    Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30);
+    staryu.LearnAbility(Ability("Splash", "It's wet", 13));
+    staryu.LearnAbility(Ability("Water Jet", "It's wetter", 15));
 
-    Battle fight(pikachu, stari);
+    Battle fight(pikachu, staryu);
     fight.StartBattle();
 
 #pragma region Proba

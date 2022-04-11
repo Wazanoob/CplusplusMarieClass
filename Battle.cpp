@@ -3,18 +3,21 @@
 
 using namespace std;
 
-//bool mTurn = false;
 
 Battle::Battle()
 {
 	mpFirstFighter = nullptr;
 	mpSecondFighter = nullptr;
+
+	mTurn = true;
 }
 
 Battle::Battle(Pokemon& firstFighter, Pokemon& secondFighter)
 {
 	mpFirstFighter = &firstFighter;
 	mpSecondFighter = &secondFighter;
+
+	mTurn = true;
 }
 
 void Battle::PlayTurn()
@@ -78,6 +81,7 @@ void Battle::NextTurn()
 
 void Battle::EndBattle()
 {
+
 }
 
 Battle::~Battle()

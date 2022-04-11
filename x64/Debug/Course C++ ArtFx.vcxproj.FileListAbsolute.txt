@@ -1,1 +1,2 @@
 E:\ArtFx\C++\CplusplusMarieClass\x64\Debug\Course C++ ArtFx.exe
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\x64\Debug\Course C++ ArtFx.exe

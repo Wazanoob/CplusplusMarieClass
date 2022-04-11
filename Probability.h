@@ -35,7 +35,6 @@ int CountDicesAbove(int sides, int throws, int minimum) {
 
 void MyRollDices()
 {
-    srand(time(0));
     int attempts = 0;
     int faces = 6;
     int doubleOne = 0;
@@ -59,7 +58,6 @@ void MyRollDices()
 
 void MarieRollDices()
 {
-    srand(time(0));
     int sides = 6, throws = 1;
     cout << "How many sides to the dices ?\n";
     cin >> sides;
