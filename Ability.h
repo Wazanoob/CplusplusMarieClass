@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "Poketypes.h"
 
 //Describe a Pokemon ability
 class Ability
@@ -10,12 +10,13 @@ private:
 	std::string mDescription;
 	int mDamage;
 	int mEnergyCost;
+	PokeTypes mType;
 
 
 public:
 	//Constructor
 	Ability();
-	Ability(std::string name, std::string desc, int damages);
+	Ability(std::string name, std::string desc, int damages, PokeTypes type);
 	Ability(std::string name, std::string desc, int damages, int energy);
 	//Destructor
 	~Ability();
@@ -23,6 +24,7 @@ public:
 	//Getter for attributes
 	std::string GetName();
 	std::string GetDescription();
+	PokeTypes GetType();
 	int GetDamages();
 	int GetEnergyCost();
 };

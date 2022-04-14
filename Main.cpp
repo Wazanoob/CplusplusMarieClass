@@ -2,6 +2,7 @@
 #include "Probability.h"
 #include "CplusplusClass.h"
 #include "Battle.h"
+#include "Trainer.h"
 #include<vector>
 #include <string>
 #include <iostream>
@@ -29,27 +30,38 @@ int main()
 
 //Pokemon
     cout << "============PIKACHU=============\n";
-    Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40);
+    Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40, PokeTypes::Electric, PokeTypes::Water);
     pikachu.DisplaySumUp();
     cout << "=========================\n";
     pikachu.petName = "Pika Pika";
     //pikachu.Hurt(6);
     //pikachu.Heal(12);
     //pikachu.DisplaySumUp();
-    Ability thunderShock = Ability("Thunder Shock", "Goes bzzzz", 20);
-    Ability gnaw = Ability("Gnaw", "Gnaws", 10);
-    Ability cutie = Ability("Cutie Pie", "2 cute 2 be true", 10);
+    Ability thunderShock = Ability("Thunder Shock", "Goes bzzzz", 20, PokeTypes::Electric);
+    Ability gnaw = Ability("Gnaw", "Gnaws", 10, PokeTypes::Psy);
+    Ability cutie = Ability("Cutie Pie", "2 cute 2 be true", 10, PokeTypes::Psy);
     pikachu.LearnAbility(thunderShock);
     pikachu.LearnAbility(gnaw);
     pikachu.LearnAbility(cutie);
 
-    Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30);
-    staryu.LearnAbility(Ability("Splash", "It's wet", 13));
-    staryu.LearnAbility(Ability("Water Jet", "It's wetter", 15));
+    Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30, PokeTypes::Electric, PokeTypes::Psy);
+    staryu.LearnAbility(Ability("Splash", "It's wet", 13, PokeTypes::Water));
+    staryu.LearnAbility(Ability("Water Jet", "It's wetter", 15, PokeTypes::Water));
 
-    Battle fight(pikachu, staryu);
-    fight.StartBattle();
+    //Battle fight(pikachu, staryu);
+    //fight.StartBattle();
 
+    cout << endl;
+
+    Trainer sacha = Trainer("Sacha", "Le meilleur des dresseurs", "Attrapes moi si tu peux!", "Scout", vector<Pokemon>{pikachu, staryu});
+    Trainer chasa = Trainer("Chasa", "Le pire des dresseurs", "Attrape toi si je peux!", "Scout", vector<Pokemon>{pikachu, staryu});
+
+    sacha.Introduce();
+    sacha.DisplayPokemon();
+    cout << endl;
+
+    chasa.Introduce();
+    chasa.DisplayPokemon();
 #pragma region Proba
 
     //MyRollDices();
@@ -84,5 +96,4 @@ int main()
 
     //cout << "touch ratio: " << touchPercentage << "; hurt ratio: " << hurtPercentage << endl;
 #pragma endregion
-
 }

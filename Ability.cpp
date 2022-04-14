@@ -12,12 +12,13 @@ Ability::Ability()
 }
 
 
-Ability::Ability(string name, string desc, int damages) 
+Ability::Ability(string name, string desc, int damages, PokeTypes type) 
 {
 	mName = name;
 	mDescription = desc;
 	mDamage = damages;
 	mEnergyCost = 0;
+	mType = type;
 }
 
 Ability::Ability(string name, string desc, int damages, int energy) 
@@ -43,6 +44,11 @@ string Ability::GetName()
 string Ability::GetDescription() 
 {
 	return mDescription;
+}
+
+PokeTypes Ability::GetType()
+{
+	return mType;
 }
 
 int Ability::GetDamages()

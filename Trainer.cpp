@@ -22,6 +22,8 @@ Trainer::Trainer(string name, string desc, string catchPhrase, string type, vect
 	mDescription = desc;
 	mCatchPhrase = catchPhrase;
 
+	mPokemons = vector<Pokemon>(pokemon);
+
 	mType = type;
 
 	mActivePokemon = -1;
@@ -103,8 +105,8 @@ void Trainer::DisplayPokemon()
 	for(int p = 0; p < mPokemons.size(); p++)
 	{
 		cout << "->";
-		cout << " * " << p << mPokemons[p].GetName() << " | "
-		<< mPokemons[p].GetDescription() << " | " << mPokemons[p].GetCurrentLifePoints()
-		<< "/" << mPokemons[p].GetMaxLifePoints() << " hp.\n"
+		cout << " * " << p << " " << mPokemons[p].GetName() << " | "
+			<< mPokemons[p].GetDescription() << " | " << mPokemons[p].GetCurrentLifePoints()
+			<< "/" << mPokemons[p].GetMaxLifePoints() << " hp.\n";
 	}
 }

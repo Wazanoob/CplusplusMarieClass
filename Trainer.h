@@ -57,9 +57,5 @@ public:
 	//void BuyPokemon();
 	//SellItem
 	//void SellPokemon();
-
-
-
-
 };
 

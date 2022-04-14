@@ -13,13 +13,16 @@ Pokemon::Pokemon()
 	mCurrentLifePoints = mMaxLifePoints;
 }
 //Constructor with Parameters
-Pokemon::Pokemon(string name, string desc, int maxLifePoints)
+Pokemon::Pokemon(string name, string desc, int maxLifePoints, PokeTypes resistance, PokeTypes weakness)
 {
 	mName = name;
 	mDescription = desc;
 	petName = mName;
 	mMaxLifePoints = maxLifePoints;
 	mCurrentLifePoints = mMaxLifePoints;
+
+	mWeakness = weakness;
+	mResistance = resistance;
 }
 
 
@@ -147,7 +150,21 @@ Ability Pokemon::GetAbility(int index)
 void Pokemon::Attack(Pokemon& target, int ability)
 {
 	cout << petName << " attacks " << target.petName << " with " << mAbilities[ability].GetName() << endl;
-	target.Hurt(mAbilities[ability].GetDamages());
+
+
+	if (target.mWeakness == mAbilities[ability].GetType())
+	{
+		cout << target.petName << " is weak to this attack type.\n";
+		cout << "It's super effective !\n";
+		target.Hurt(mAbilities[ability].GetDamages() * 1.5);
+	}
+	else if (target.mResistance == mAbilities[ability].GetType())
+	{
+		cout << target.petName << " is resistant to this attack type.\n";
+		cout << "It's not very effective !\n";
+		target.Hurt(mAbilities[ability].GetDamages() * 0.5);
+	}
+
 }
 
 //Describe the pokemon
