@@ -25,6 +25,7 @@ public:
 	std::string GetName();
 	std::string GetDescription();
 	PokeTypes GetType();
+	std::string GetStringType();
 	int GetDamages();
 	int GetEnergyCost();
 };

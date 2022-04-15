@@ -1,3 +1,5 @@
-﻿  Main.cpp
-C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Main.cpp(14,15): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+﻿  Pokemon.cpp
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Pokemon.cpp(167,26): warning C4267: 'return' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Pokemon.cpp(191,48): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+C:\Users\cpaya\source\repos\Course C++ ArtFx\Course C++ ArtFx\Pokemon.cpp(197,48): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
   Course C++ ArtFx.vcxproj -> C:\Users\cpaya\source\repos\Course C++ ArtFx\x64\Debug\Course C++ ArtFx.exe

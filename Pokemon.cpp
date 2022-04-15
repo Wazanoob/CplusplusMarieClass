@@ -11,9 +11,11 @@ Pokemon::Pokemon()
 	petName = "Default";
 	mMaxLifePoints = 1;
 	mCurrentLifePoints = mMaxLifePoints;
+
+	mType = PokeTypes::Normal;
 }
 //Constructor with Parameters
-Pokemon::Pokemon(string name, string desc, int maxLifePoints, PokeTypes resistance, PokeTypes weakness)
+Pokemon::Pokemon(string name, string desc, int maxLifePoints, PokeTypes type)
 {
 	mName = name;
 	mDescription = desc;
@@ -21,8 +23,7 @@ Pokemon::Pokemon(string name, string desc, int maxLifePoints, PokeTypes resistan
 	mMaxLifePoints = maxLifePoints;
 	mCurrentLifePoints = mMaxLifePoints;
 
-	mWeakness = weakness;
-	mResistance = resistance;
+	mType = type;
 }
 
 
@@ -90,13 +91,10 @@ void Pokemon::Heal(int points)
 
 void Pokemon::LearnAbility(Ability ability)
 {
-	cout << "Trying to learn " << ability.GetName() << endl;
-
 	if (mAbilities.size() < MAX_ABILITIES_COUNT)
 	{
 		//Add ability
 		mAbilities.push_back(ability);
-		cout << mName << " learned : " << ability.GetName() << endl;
 	}
 	else
 	{
@@ -112,10 +110,7 @@ void Pokemon::LearnAbility(Ability ability)
 		} while (choice <= 0 || choice > MAX_ABILITIES_COUNT);
 
 		mAbilities[choice - 1] = ability;
-		cout << "Ability was replaced with success. \n";
-		cout << "New Abilities are : \n";
 	}
-	DisplayAbilities();
 }
 
 void Pokemon::DisplayAbilities() 
@@ -123,11 +118,48 @@ void Pokemon::DisplayAbilities()
 	//cout << petName << " knows the following abilities :\n";
 	for (int a = 0; a < mAbilities.size(); a++)
 	{
-		cout << "\t*" << (a + 1 ) 
-			<< " : " << mAbilities[a].GetName() 
-			<< " | " << mAbilities[a].GetDescription() 
+		cout << "\t*" << (a + 1)
+			<< " : " << mAbilities[a].GetName()
+			<< " ( " << mAbilities[a].GetStringType() << " ) "
+			<< " | " << mAbilities[a].GetDescription()
 			<< " | dmg : " << mAbilities[a].GetDamages() << "hp.\n";
 	}
+}
+
+bool Pokemon::isWeakTo(PokeTypes type)
+{
+	switch (type) 
+	{
+	case PokeTypes::Electric:
+		return mType == PokeTypes::Water;
+	case PokeTypes::Fire:
+		return mType == PokeTypes::Grass;
+	case PokeTypes::Water:
+		return mType == PokeTypes::Fire;
+	case PokeTypes::Grass:
+		return mType == PokeTypes::Ground;
+	case PokeTypes::Ground:
+		return mType == PokeTypes::Electric;
+	}
+	return false;
+}
+
+bool Pokemon::isResistantTo(PokeTypes type)
+{
+	switch (type)
+	{
+	case PokeTypes::Fire:
+		return mType == PokeTypes::Water;
+	case PokeTypes::Water:
+		return mType == PokeTypes::Grass;
+	case PokeTypes::Grass:
+		return mType == PokeTypes::Fire;
+	case PokeTypes::Electric:
+		return mType == PokeTypes::Ground;
+	case PokeTypes::Ground:
+		return mType == PokeTypes::Electric;
+	}
+	return false;
 }
 
 int Pokemon::GetAbilityCount() 
@@ -152,19 +184,19 @@ void Pokemon::Attack(Pokemon& target, int ability)
 	cout << petName << " attacks " << target.petName << " with " << mAbilities[ability].GetName() << endl;
 
 
-	if (target.mWeakness == mAbilities[ability].GetType())
+	if (target.isWeakTo(mAbilities[ability].GetType()))
 	{
 		cout << target.petName << " is weak to this attack type.\n";
 		cout << "It's super effective !\n";
 		target.Hurt(mAbilities[ability].GetDamages() * 1.5);
 	}
-	else if (target.mResistance == mAbilities[ability].GetType())
+	else if (target.isResistantTo(mAbilities[ability].GetType()))
 	{
 		cout << target.petName << " is resistant to this attack type.\n";
 		cout << "It's not very effective !\n";
 		target.Hurt(mAbilities[ability].GetDamages() * 0.5);
-	}
-
+	}else
+		target.Hurt(mAbilities[ability].GetDamages());
 }
 
 //Describe the pokemon

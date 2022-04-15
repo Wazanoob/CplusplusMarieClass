@@ -144,6 +144,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Trainer.cpp" />
+    <ClCompile Include="TrainerBattle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ability.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="PokeTypes.h" />
     <ClInclude Include="Probability.h" />
     <ClInclude Include="Trainer.h" />
+    <ClInclude Include="TrainerBattle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -92,6 +92,7 @@ void Trainer::CatchPokemon(Pokemon pokemon)
 
 void Trainer::ChangePokemon(int newPokemon)
 {
+
 }
 
 void Trainer::Introduce()

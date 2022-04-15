@@ -51,6 +51,25 @@ PokeTypes Ability::GetType()
 	return mType;
 }
 
+std::string Ability::GetStringType()
+{
+	switch (mType) 
+	{
+	case PokeTypes::Electric:
+		return "Electric";
+	case PokeTypes::Ground:
+		return "Ground";
+	case PokeTypes::Water:
+		return "Water";
+	case PokeTypes::Grass:
+		return "Grass";
+	case PokeTypes::Fire:
+		return "Fire";
+	}
+
+	return "Default";
+}
+
 int Ability::GetDamages()
 {
 	return mDamage;

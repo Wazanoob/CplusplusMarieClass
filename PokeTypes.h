@@ -7,10 +7,6 @@ enum class PokeTypes {
 	Electric,	//3
 	Ground,		//4
 	Grass,		//5
-	Dark,		//6
-	Fighting,	//7
-	Ice,		//8
-	Psy,		//9
 
 	Default = 50
 };	

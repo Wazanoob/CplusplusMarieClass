@@ -14,13 +14,13 @@ private:
 	//Should add Abilities later
 	std::vector<Ability> mAbilities;
 	//Add all the public variables and functions here
-	PokeTypes mResistance, mWeakness;
+	PokeTypes mType;
 
 public:
 	std::string petName;
 	const int MAX_ABILITIES_COUNT = 4;
 	Pokemon();
-	Pokemon(std::string name, std::string desc, int maxLifePoints, PokeTypes resistance, PokeTypes weakness);
+	Pokemon(std::string name, std::string desc, int maxLifePoints, PokeTypes mType);
 	//Add constructor with abilities parameter
 
 	//The rest of the functions (Private)
@@ -34,8 +34,8 @@ public:
 	void Heal(int points);
 	void LearnAbility(Ability ability);
 	void DisplayAbilities();
-	//Add attack
-
+	bool isWeakTo(PokeTypes type);
+	bool isResistantTo(PokeTypes type);
 	void DisplaySumUp();
 	int GetAbilityCount();
 	Ability GetAbility(int index);

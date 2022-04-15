@@ -30,7 +30,7 @@ int main()
 
 //Pokemon
     cout << "============PIKACHU=============\n";
-    Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40, PokeTypes::Electric, PokeTypes::Water);
+    Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40, PokeTypes::Electric);
     pikachu.DisplaySumUp();
     cout << "=========================\n";
     pikachu.petName = "Pika Pika";
@@ -38,18 +38,18 @@ int main()
     //pikachu.Heal(12);
     //pikachu.DisplaySumUp();
     Ability thunderShock = Ability("Thunder Shock", "Goes bzzzz", 20, PokeTypes::Electric);
-    Ability gnaw = Ability("Gnaw", "Gnaws", 10, PokeTypes::Psy);
-    Ability cutie = Ability("Cutie Pie", "2 cute 2 be true", 10, PokeTypes::Psy);
+    Ability gnaw = Ability("Gnaw", "Gnaws", 10, PokeTypes::Ground);
+    Ability cutie = Ability("Cutie Pie", "2 cute 2 be true", 10, PokeTypes::Grass);
     pikachu.LearnAbility(thunderShock);
     pikachu.LearnAbility(gnaw);
     pikachu.LearnAbility(cutie);
 
-    Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30, PokeTypes::Electric, PokeTypes::Psy);
+    Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30, PokeTypes::Water);
     staryu.LearnAbility(Ability("Splash", "It's wet", 13, PokeTypes::Water));
     staryu.LearnAbility(Ability("Water Jet", "It's wetter", 15, PokeTypes::Water));
 
-    //Battle fight(pikachu, staryu);
-    //fight.StartBattle();
+    Battle fight(pikachu, staryu);
+    fight.StartBattle();
 
     cout << endl;
 
@@ -62,6 +62,8 @@ int main()
 
     chasa.Introduce();
     chasa.DisplayPokemon();
+
+
 #pragma region Proba
 
     //MyRollDices();

@@ -1,0 +1,1 @@
+#include "TrainerBattle.h"
