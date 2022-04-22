@@ -29,6 +29,7 @@ int main()
     //ShowVector();
 #pragma endregion
 
+#pragma region Pokemon
 //Pokemon
     Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40, PokeTypes::Electric);
     pikachu.petName = "Pika Pika";
@@ -59,6 +60,7 @@ int main()
 
     TrainerBattle trainerFight(sacha, chasa);
     trainerFight.StartBattle();
+#pragma endregion
 
 #pragma region Proba
 
