@@ -3,6 +3,7 @@
 #include "CplusplusClass.h"
 #include "Battle.h"
 #include "Trainer.h"
+#include "TrainerBattle.h"
 #include<vector>
 #include <string>
 #include <iostream>
@@ -29,40 +30,35 @@ int main()
 #pragma endregion
 
 //Pokemon
-    cout << "============PIKACHU=============\n";
     Pokemon pikachu = Pokemon("Pikachu", "chunky boi", 40, PokeTypes::Electric);
-    pikachu.DisplaySumUp();
-    cout << "=========================\n";
     pikachu.petName = "Pika Pika";
-    //pikachu.Hurt(6);
-    //pikachu.Heal(12);
-    //pikachu.DisplaySumUp();
-    Ability thunderShock = Ability("Thunder Shock", "Goes bzzzz", 20, PokeTypes::Electric);
-    Ability gnaw = Ability("Gnaw", "Gnaws", 10, PokeTypes::Ground);
-    Ability cutie = Ability("Cutie Pie", "2 cute 2 be true", 10, PokeTypes::Grass);
-    pikachu.LearnAbility(thunderShock);
-    pikachu.LearnAbility(gnaw);
-    pikachu.LearnAbility(cutie);
+    pikachu.LearnAbility(Ability("Thunder Shock", "Goes bzzzz", 20, PokeTypes::Electric));
+    pikachu.LearnAbility(Ability("Gnaw", "Gnaws", 10, PokeTypes::Ground));
+    pikachu.LearnAbility(Ability("Cutie Pie", "2 cute 2 be true", 10, PokeTypes::Grass));
 
     Pokemon staryu = Pokemon("Staryu", "A cute starfish", 30, PokeTypes::Water);
+    staryu.petName = "Stariiiiyuuu";
     staryu.LearnAbility(Ability("Splash", "It's wet", 13, PokeTypes::Water));
     staryu.LearnAbility(Ability("Water Jet", "It's wetter", 15, PokeTypes::Water));
 
-    Battle fight(pikachu, staryu);
-    fight.StartBattle();
+    Pokemon salameche = Pokemon("Salameche", "Da cute dragon", 35, PokeTypes::Fire);
+    salameche.petName = "Salamaa";
+    salameche.LearnAbility(Ability("Blaze", "Burn the hell out of you", 20, PokeTypes::Fire));
+    salameche.LearnAbility(Ability("Fire fangs", "It's wetter", 15, PokeTypes::Fire));
 
-    cout << endl;
+    Pokemon nosferalto = Pokemon("Nosferalto", "Dracula", 25, PokeTypes::Ground);
+    nosferalto.petName = "Nossuuuu";
+    nosferalto.LearnAbility(Ability("Vampirism", "Bloody hell", 13, PokeTypes::Normal));
+    nosferalto.LearnAbility(Ability("Black gaze", "MadBoi", 15, PokeTypes::Ground));
+
+    //Battle fight(pikachu, staryu);
+    //fight.StartBattle();
 
     Trainer sacha = Trainer("Sacha", "Le meilleur des dresseurs", "Attrapes moi si tu peux!", "Scout", vector<Pokemon>{pikachu, staryu});
-    Trainer chasa = Trainer("Chasa", "Le pire des dresseurs", "Attrape toi si je peux!", "Scout", vector<Pokemon>{pikachu, staryu});
+    Trainer chasa = Trainer("Chasa", "Le pire des dresseurs", "Attrape toi si je peux!", "Scout", vector<Pokemon>{salameche, nosferalto});
 
-    sacha.Introduce();
-    sacha.DisplayPokemon();
-    cout << endl;
-
-    chasa.Introduce();
-    chasa.DisplayPokemon();
-
+    TrainerBattle trainerFight(sacha, chasa);
+    trainerFight.StartBattle();
 
 #pragma region Proba
 

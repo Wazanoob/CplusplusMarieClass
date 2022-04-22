@@ -20,10 +20,15 @@ Battle::Battle(Pokemon& firstFighter, Pokemon& secondFighter)
 	mTurn = true;
 }
 
+Battle::~Battle()
+{
+
+}
+
 void Battle::PlayTurn()
 {
 	//Check who is attacking or defending
-	Pokemon* attacker= mpFirstFighter;
+	Pokemon* attacker = mpFirstFighter;
 	Pokemon* defender = mpSecondFighter;
 
 	if (!mTurn)
@@ -80,11 +85,6 @@ void Battle::NextTurn()
 }
 
 void Battle::EndBattle()
-{
-
-}
-
-Battle::~Battle()
 {
 
 }
